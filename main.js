@@ -24,6 +24,9 @@ app.on('ready', () => {
     // 使用相对路径
     mainWindow.loadFile('index.html');
 
+    // 打开调试工具
+    mainWindow.webContents.openDevTools();
+
     // 加载 index.html 的第二种方式
     // 使用绝对路径
     mainWindow.loadURL(path.join('file:', __dirname, 'index.html'));

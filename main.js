@@ -32,6 +32,9 @@ function createWindow() {
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
+
+  // 主进程加载自定义菜单
+  // require('./main/menu.js');
 }
 
 app.on("ready", createWindow);

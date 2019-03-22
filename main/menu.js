@@ -6,48 +6,54 @@
 // const menu = electron.Menu;
 
 // ES6 写法
-const { Menu } = require('electron');
+const { Menu, shell, BrowserWindow } = require('electron');
+
+function openWebView(url) {
+    console.log("url:", url);
+    let win = BrowserWindow.getFocusedWindow();
+    win.webContents.send('openWebView', url);
+}
+
+function openWeb(url) {
+    shell.openExternal(url);
+}
 
 // 定义 menu 模板
 const template = [
     {
-        label: '文件',
+        label: '加载网页',
         submenu: [
             {
-                label: '新建文件',
-                accelerator: 'cmd + n',
+                label: '优酷',
                 click: function() {
-                    console.log('cmd + n');
+                    openWebView('https://youku.com/');
                 }
             },
             {
-                label: '新建窗口',
-                accelerator: 'cmd + w',
+                label: '爱奇艺',
                 click: function() {
-                    console.log('new window');
+                    openWebView('https://www.iqiyi.com/');
                 }
             }
         ]
     },
     {
-        label: '编辑',
+        label: '帮助',
         submenu: [
             {
-                // 在 macOS 下使用 role 的时候 必须指定 accelerator
-                // 否则菜单不生效
-                role: 'copy',
-                label: '复制',  
-                accelerator: 'cmd + c', 
+                label: "关于我们",
+                click: function() {
+                    openWeb('http://www.baidu.com')
+                }
             },
             {
-                role: 'paste',
-                label: '粘贴',
-                accelerator: 'cmd + v', 
+                type: 'separator' // 分隔符
             },
             {
-                role: 'cut',
-                label: '剪贴',
-                accelerator: 'cmd + x', 
+                label: "联系我们",
+                click: function() {
+                    openWeb('http://www.vectorwings.top')
+                }
             }
         ]
     }

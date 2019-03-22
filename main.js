@@ -34,7 +34,9 @@ function createWindow() {
   });
 
   // 主进程加载自定义菜单
-  // require('./main/menu.js');
+  require('./main/menu.js');
+  
+  require('./main/ipcMain.js');
 }
 
 app.on("ready", createWindow);

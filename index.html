@@ -26,8 +26,37 @@
 
     <p>这是测试内容</p>
 
+    <button id="send">
+        渲染检查执行主进程里面的方法
+    </button>
+
+    <button id="sendReply">
+        主进程给渲染进程返回结果
+    </button>
+
+    <button id="sendSync">
+        渲染进程和主进程通信（同步）
+    </button>
+
+    <a id="aDom" href="https://www.baidu.com">百度</a>
+
+    <webview id="myWebView" src="https://www.baidu.com" style="position: fixed; width: 100%; height: 100%;"></webview>
+
     <!-- 加载顶部自定义菜单 -->
-    <script src="renderer/menu.js"></script>
-    <script src="renderer/open.js"></script>
+    <!-- <script src="renderer/menu.js"></script> -->
+
+    <!-- 从渲染进程打开新窗口 -->
+    <!-- <script src="renderer/open.js"></script> -->
+
+    <!-- 主进程和渲染进程之间的通信 -->
+    <!-- <script src="renderer/ipcRenderer.js"></script> -->
+
+    <!-- 通过主进程和渲染进程的通讯打开新窗口 -->
+    <script src="renderer/openWindow.js"></script>
+
+    <!-- 通过外部模块打开连接 -->
+    <script src="renderer/link.js"></script>
+
+    <script src="renderer/webview.js"></script>
   </body>
 </html>
